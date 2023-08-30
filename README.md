@@ -12,18 +12,16 @@ by E5 models.
 
 ## Why build this?
 
-I wanted a Docker based server that I could just run to generate embeddings for
-Struct threads. But, I couldn't find it online. Particularly when you want to
-tackle longer documents which don't fit the 512 token limit. In those cases, the
-document needs to be chunked, ideally at the sentence endings. I couldn't find
-this setup available online, so put this together.
-
 I was looking for a Docker-based server, which can expose a simple endpoint to
-generate embeddings for documents. The solution needs to deal with lengthy
-documents that exceed the 512-token limit enforced by E5 models. Such documents
-require intelligent chunking, ideally at sentence boundaries, followed by taking
-a mean of the vectors, to work effectively. Since I couldn't find a solution
-that met these criteria, I decided to create this setup myself.
+generate vector embeddings for documents. The solution needs to deal with
+lengthy documents that exceed the 512-token limit enforced by E5 models. Such
+documents require intelligent chunking, ideally at sentence boundaries, followed
+by taking a mean of the vectors, to work effectively. Since I couldn't find a
+solution that met these criteria, I decided to create this setup myself.
+
+This setup doesn't deal with storing and searching over the vectors. It only
+deals with generation of the vectors. To search over the vectors, you'd need
+another system.
 
 ## Build
 
