@@ -20,5 +20,9 @@ COPY app.py .
 EXPOSE 10002
 
 # Run the app
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:10002", "app:app"]
+#
+# For CPU based servers, 4 processes can over-saturate a Ryzen 5950x 32-cpu
+# chip. htop shows load avg of 52, which means processes are waiting for CPU
+# time. So, let's limit this to only 2 processes.
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:10002", "app:app"]
 # CMD ["python", "-u", "app.py"]
