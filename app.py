@@ -27,8 +27,6 @@ def embed_text():
     if prefix is None:
         return jsonify({"error": "No prefix provided"}), 400
 
-    logging.info("Got a valid request")
-
     try:
         # Tokenize the text into sentences
         sentences = sent_tokenize(text)
@@ -47,7 +45,7 @@ def embed_text():
             num_tokens = num_tokens + sentence_length
 
             if sentence_length > 500:
-                logging.info(f"Skipping too long of a sentence {sentence}")
+                logging.info(f"Skipping too long of a sentence: {sentence}")
                 invalid_tokens = invalid_tokens + sentence_length
                 continue
 
