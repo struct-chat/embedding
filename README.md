@@ -1,6 +1,6 @@
-# E5 Embedding Server
+# Vector Embedding Server
 
-Server to generate embeddings for arbitrary-length documents using E5 model.
+Server to generate vector embeddings for arbitrary-length documents using E5 model, in under 100 lines of code.
 
 Contains a Dockerfile which downloads [e5-small-v2][] during build time (hence
 avoiding any runtime surprises), and runs app.py.
