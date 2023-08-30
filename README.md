@@ -2,8 +2,10 @@
 
 Server to generate embeddings for arbitrary-length documents using E5 model.
 
-Contains a Dockerfile which downloads `e5-small-v2` during build time (hence
+Contains a Dockerfile which downloads [e5-small-v2][] during build time (hence
 avoiding any runtime surprises), and runs app.py.
+
+[e5-small-v2]: https://huggingface.co/intfloat/e5-small-v2
 
 app.py uses this model to generate embeddings, even for longer documents, by
 chunking them up at sentence level, and taking a mean at the end. The sentences
@@ -36,7 +38,8 @@ you'd have to update the name in both Dockerfile and app.py.
 ## Usage
 
 When passing a document, use the prefix: `passage: `. When querying for similar
-documents, use the prefix `query: `.
+documents, use the prefix `query: `. [e5-small-v2][] has a question about
+these prefixes in the FAQ.
 
 If a single sentence exceeds the 512 tokens limit, then we ignore that sentence,
 considering it invalid, and adding its tokens to the `invalid_tokens` count.
