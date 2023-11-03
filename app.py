@@ -16,6 +16,10 @@ model = SentenceTransformer(model_name)
 # Initialize the Hugging Face tokenizer using the same model name
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
+@app.route('/health', methods=['GET'])
+def health():
+   return jsonify({"status": "ok"}), 200
+
 @app.route('/embed', methods=['POST'])
 def embed_text():
     data = request.json
