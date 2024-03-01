@@ -17,12 +17,12 @@ RUN pip install --no-cache-dir Flask gunicorn numpy
 COPY app.py .
 
 # Expose the port the app runs on
-EXPOSE 10002
+EXPOSE 8080
 
 # Run the app
 #
 # For CPU based servers, 4 processes can over-saturate a Ryzen 5950x 32-cpu
 # chip. htop shows load avg of 52, which means processes are waiting for CPU
 # time. So, let's limit this to only 2 processes.
-CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:10002", "app:app"]
+CMD ["gunicorn", "-w", "2", "-b", "0.0.0.0:8080", "app:app"]
 # CMD ["python", "-u", "app.py"]
